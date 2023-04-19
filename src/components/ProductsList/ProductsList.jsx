@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import image from '../../images/cancel.png'
 import imageEdit from '../../images/pencil.png';
+import Edit from '../Edit/Edit';
+import Modal from '../Modal/Modal';
+
 
 const ProductsList = ({productsList, setProductsList}) => {
 
   const [edit, setEdit] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalId, setModalId] = useState();
 
   const onDelete = (productId) => {
     const newProductsList = productsList.filter(product => product.id !== productId);
@@ -12,25 +17,13 @@ const ProductsList = ({productsList, setProductsList}) => {
     console.log(productId);
   }
 
-  const onEdit = (e, productId) => {
-    e.preventDefault();
+  const openModal = (productId) => {
 
-    let target = e.target;
-    const index = productsList.findIndex(product => product.id === productId);
-    let products = productsList;
+    setModalId(productId);
 
-    let updated_product = {
-      productId,
-      name: target.name.value,
-      amount: target.amount.value
-    }
-
-    products[index] = updated_product;
-
-    setProductsList(products);
-    setEdit(0);
+    setIsOpen(true);
   }
-
+ 
   return (
     <>
       {productsList.map((product, index)=> {
@@ -48,24 +41,15 @@ const ProductsList = ({productsList, setProductsList}) => {
               </div>
             </div> 
             <div>
-              <button className='comment-btn'> Comment </button>
+              <button className='comment-btn' onClick={() => openModal(product.id)}> Comment </button>
             </div>
+            <div className='modal-container'>
+              <Modal open={isOpen} close = {() => setIsOpen(false)} productsList={productsList} setProductsList={setProductsList} productId={modalId} setIsOpen={setIsOpen}></Modal>
+            </div>
+           
 
             {edit === product.id && (
-              <>
-              <br></br>
-              <div className='form-container'>
-                <h3> Edit product </h3>
-
-                <form className='form' onSubmit={(e) => onEdit(e, product.id)}>
-                  <input className='input-form' name='name' type='text' placeholder='Name'></input>
-
-                  <input className='input-form' name='amount' type='number' placeholder='Amount'></input>
-
-                  <button className='form-btn'> Save </button>
-                </form>
-              </div>
-              </>
+              <Edit productsList={productsList} setProductsList={setProductsList} edit={edit} setEdit={setEdit} productId={product.id}/>
             )}
         </div>
         )

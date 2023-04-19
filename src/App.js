@@ -8,16 +8,21 @@ function App() {
   const [products, setProducts] = useState ([{
     id: 1,
     name: "Pencil",
-    amount: 5
+    amount: 5,
+    comments: []
   }, {
     id: 2,
     name: "Book",
-    amount: 1
+    amount: 1,
+    comments: []
   },{
     id: 3,
     name: "Rubber",
-    amount: 2
+    amount: 2,
+    comments: []
   }])
+
+  
 
   return (
     <>
@@ -30,7 +35,7 @@ function App() {
             <h2> Products </h2>
           </div>
           <div className='list'>
-            <ProductsList productsList={products} setProductsList={setProducts} />
+            <ProductsList productsList={products} setProductsList={setProducts}/>
           </div>
         </section>
         <aside className='lateral'>
