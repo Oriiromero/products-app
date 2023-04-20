@@ -15,7 +15,7 @@ const Edit = ({productsList, setProductsList, edit, setEdit, productId}) => {
           id: productId,
           name: target.name.value,
           amount: target.amount.value,
-          comments: []
+          comments: products[index].comments
         }
 
         products[index] = updated_product;
