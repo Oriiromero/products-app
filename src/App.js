@@ -22,12 +22,22 @@ function App() {
     comments: []
   }])
 
+  const [text, setText] = useState('Provider')
+
+  const userChange = (e) => {
+    if(text === 'Provider'){
+      setText('Client');
+    } else {
+      setText('Provider');
+    }
+  }
   
 
   return (
     <>
       <header className='header'>
-        {/* IMPRIMIR EL COMPONENTE DE USUARIO */}
+        <h2> {text} </h2>
+        <button className='btn-header' onClick={(e) => userChange(e)}> Change user </button>
       </header>
       <div className='layout'>
         <section className='content-box'>

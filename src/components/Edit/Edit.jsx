@@ -9,16 +9,17 @@ const Edit = ({productsList, setProductsList, edit, setEdit, productId}) => {
         let target = e.target;
         const index = productsList.findIndex(product => product.id === productId);
         let products = productsList;
+
     
         let updated_product = {
-          productId,
+          id: productId,
           name: target.name.value,
           amount: target.amount.value,
           comments: []
         }
 
         products[index] = updated_product;
-    
+        console.log(updated_product);
         setProductsList(products);
         setEdit(0);
       }

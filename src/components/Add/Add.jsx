@@ -13,8 +13,6 @@ const Add = ({setProducts, products}) => {
     setProducts([...products, {id, ...dataF, comments: []}]);
 
   }
-
-  console.log(products);
   
   return (
     <>

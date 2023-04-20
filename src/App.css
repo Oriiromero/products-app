@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;600&display=swap');
 
+/*HEADER STYLES*/
+.header {
+  padding: 0 35px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(167, 192, 237);
+  align-items: center;
+}
+
+.header h2 {
+  font-family: 'Comfortaa', cursive;
+}
+
+.btn-header {
+  margin: 8px 0;
+  border-radius: 10px;
+  border: solid 1px white;
+  background-color: rgb(57, 141, 190);
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bolder;
+  transition: 0.6s;
+  font-family: 'Comfortaa', cursive;
+  color: black;
+}
+
+.btn-header:hover{
+  background-color: rgb(168, 205, 240);
+  color: black;
+}
+
 /* APP STYLES*/
 .layout {
   display: flex;
@@ -21,7 +53,7 @@
 }
 
 .products-title {
-  border-bottom: 2px solid rgb(167, 192, 237);;
+  border-bottom: 2px solid rgb(167, 192, 237);
 }
 
 .products-title h2{
